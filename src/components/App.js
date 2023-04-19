@@ -60,7 +60,7 @@ function App() {
 
   useEffect(() => {
     tokenCheck();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   function tokenCheck() {
     const jwt = localStorage.getItem("jwt");
@@ -182,9 +182,8 @@ function App() {
       <div className="body">
         <div className="page">
           <Header email={email} isLoggedIn={loggedIn} onClick={handleExitClick} />
-          <ProtectedRoute
-              exact
-              path="/"
+          <Routes>
+            <Route path="/" exact element={<ProtectedRoute
               component={Main}
               loggedIn={loggedIn}
               onAddCard={handleAddPlaceClick}
@@ -194,8 +193,7 @@ function App() {
               cards={cards}
               onCardLike={handleCardClick}
               onCardDelete={handleCardDelete}
-            />
-          <Routes>
+              />} />
             <Route path="/sign-in" element={<Login onAuthtorize={handleLogin} />} />
             <Route path="/sign-up" element={<Register onRegister={handleRegister} />} />
           </Routes>
