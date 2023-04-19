@@ -17,7 +17,7 @@ function Register({ onRegister }) {
 
   return (
     <section className="sign">
-      <form className="sign__form" onSubmit={handleSubmit} noValidate>
+      <form className="sign__form" onSubmit={handleSubmit}>
         <div>
           <h2 className="sign__title">Регистрация</h2>
           <input
